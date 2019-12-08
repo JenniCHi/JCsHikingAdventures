@@ -1,0 +1,64 @@
+<h1 class = "headings">Pending Bookings</h1>
+
+<% if @cart.empty? %>
+    <p class = "centeredText"> You have no pending adventures to book</p>
+<%else%>
+
+    <table id="bookingTable" class = "tableGreyScheme">
+        <thead>
+            <tr> 
+                <td> Destination </td>
+                <td class = "centerRow"> No. tickets </td>
+                <td class = "centerRow"> Chosen Date </td>
+                <td> Total </td>
+            </tr>
+        </thead>
+        <tbody> 
+            <% total = 0%>
+            <%@cart.each do |adventureId, ticketQuantityAndDate|%>
+            <%adventure = Adventure.find_by_id(adventureId)%>
+            <tr>
+                <td> <%=adventure.title%> </td>
+                <td class = "centerRow">
+                    <a href = "/cart/<%=adventure.id%>/increase">+</a>
+                    <%= ticketQuantityAndDate["ticketQuantity"] %> 
+                    <a href = "/cart/<%=adventure.id%>/decrease">-</a>
+                </td>
+                <td>
+                    <%@adventureId = adventureId%>
+                     
+    				<%= render 'dateChangeForm', 
+    				:locals => {:dateOfNextSaturday => @dateOfNextSaturday, :dateOfNextSunday => @dateOfNextSunday, :adventureId =>  @adventureId}%>
+                </td>
+                <td> <%= number_to_currency(adventure.price*ticketQuantityAndDate["ticketQuantity"], :unit => "€")%> </td>
+                <td class = "centerRow"> 
+    	            <form>
+              	        <button class="button1" formaction="/cart/<%=adventure.id%>/remove">Remove</button>
+                    </form> 
+                </td> 
+            </tr>
+            <%total += adventure.price*ticketQuantityAndDate["ticketQuantity"]%>
+            <%end%>
+            <tr> 
+                <td></td>
+                <td></td>
+                <td></td>
+                <td> Total cost = <%= number_to_currency(total, :unit => "€")%></td>
+                <td> 
+    	            <form>
+              	        <button class="button1" formaction="/cancel">Cancel Booking</button>
+                    </form> 
+                </td>
+            </tr>
+        </tbody>
+    </table>   
+    <div class = "checkoutButtonDiv"> 
+        <form action="/checkout">
+            <input type="hidden" name="business" value="x18105386@student.ncirl.ie">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="amount" value="<%= number_to_currency(total, :unit => "€")%>">
+            <input type="submit" name="submit" value ="Checkout with PayPal" class="button1">
+            <input type="hidden" name="return" value="/bookings" >
+        </form>
+    </div>
+<%end%>    

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JC'sHikingAdventures</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h3> JC's Hiking Adventures </h3>
+      <div id = "signInOrOutTopCorner" class = "signInOrOutTopCorner">
+
+          <% if user_signed_in? %>
+            <li> <a href = "/users/edit">Hi <%= current_user.name%>, click to edit profile</a></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+            <li><%=link_to 'Your Cart', '/cart/index'%></li>
+          <%else%>
+            <li><%=link_to 'Register', new_user_registration_path%></li>
+            <li><%=link_to 'Sign In', new_user_session_path%></li>
+          <%end%>
+      </div>
+      <%= yield :header %>
+    </header>
+  
+    <section>
+      <nav>
+        <ul>
+          <li><%=link_to 'Home', '/' %></li>
+          <li><%=link_to 'Adventures', '/adventures'%></li>
+          <%if user_signed_in? %>
+            <li><%=link_to 'Your Bookings', '/bookings'%></li>
+          <%end%>
+          <li><%=link_to 'Gallery', '/gallery'%></li>
+          <li><%=link_to 'About', '/about'%></li>
+        </ul>
+      </nav>
+      
+      <article>
+        <%= yield %>
+      </article>
+    </section>
+  
+    <footer>
+      <p>Footer</p>
+    </footer>
+    
+  </body>
+</html>

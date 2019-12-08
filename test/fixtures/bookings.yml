@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adventure_id: 1
+  adventure_title: MyString
+  ticket_quantity: 1
+  adventure_date: 2019-11-24 20:27:55
+  cost: 9.99
+  user: one
+
+two:
+  adventure_id: 1
+  adventure_title: MyString
+  ticket_quantity: 1
+  adventure_date: 2019-11-24 20:27:55
+  cost: 9.99
+  user: two

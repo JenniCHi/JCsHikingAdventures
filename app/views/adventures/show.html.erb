@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @adventure.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @adventure.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @adventure.price %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @adventure.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_adventure_path(@adventure) %> |
+<%= link_to 'Back', adventures_path %>

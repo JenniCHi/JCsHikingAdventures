@@ -1,0 +1,337 @@
+.adventureTableColumn{
+  background: rgb(111, 111, 111, 0.5);
+}
+
+.adventureHeading{
+  padding-bottom: 1em;
+}
+
+article {
+  float: left;
+  padding: 1vw;
+  width: 90%;
+  background-color: rgb(102, 102, 102, 0.1);
+  height: 100%; /* only for demonstration, should be removed */
+  overflow-y: scroll;
+}
+
+body {
+    background: url('/assets/backgroundWithSun.gif') no-repeat center fixed;
+    background-size: cover;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 100%;
+    color: #FFF3F4;
+} 
+
+.button1 {
+	background-color: #666;
+	color: #FFF3F4;
+	margin:auto;
+	display:block;
+	border-color: #666;	
+  transition-duration: 0.4s;
+	cursor: pointer;
+	font-family: Impact, Charcoal, sans-serif;
+  font-size: 100%;
+}
+
+.checkoutButtonDiv{
+	margin-top: 2em;
+	font-size: 2em;
+}
+/*Hover cannot override id properties, hence it is applied to a button class instead.*/
+.button1:hover {
+    background-color: #f1f1f1; 
+    color: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.centerRow {
+  text-align: center;  
+  padding-bottom: 1em;
+}
+
+.centeredText{
+  text-align: center;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#dateChoiceField{
+  font-size: 80%;  
+}
+
+div.gallery {
+  border: 1px solid rgb(204, 204, 204);
+  transition: transform 0.25s;
+}
+
+div.gallery:hover {
+  border: 1px solid #888;
+  transform: scale(1.05)
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  background: rgb(111, 111, 111, 0.5);
+}
+
+.galleryImageDiv {
+  padding: 0em 1em 1em 1em;
+  float: left;
+  width: 24.99999%;
+}
+
+.floatLeft{
+   float:left;
+   padding-left: 0.1em;
+   margin : 0;
+   text-align: center;
+}
+
+#googleMapIframe{
+  height: 30vw;
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block;
+  Width: 50vw;
+}
+
+.googleMapDiv {
+}
+
+
+header {
+  background-color: rgb(102, 102, 102, 0.8);
+  padding: 1vw;
+  text-align: center;
+  color: white;
+  height: 10vh;
+  font-size: 1em;
+}
+
+.headings {
+	text-align: center;
+	font-size: 3em;
+	opacity: 0.8;
+}
+
+.increaseDecrease {
+  width : 1em;
+}
+
+li a {
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 1.4em 0em;
+    text-decoration: none;
+    
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 10%;
+  height: 100%; /* only for demonstration, should be removed */
+  background: rgb(204, 204, 204, 0.5);
+  padding: 1vw;
+  font-size: 1.15em; 
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notice{
+  padding: 2em;
+}
+
+.productImage {
+  width: 100%; 
+  height: auto;
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block;
+  float: left;
+}
+
+section {
+  height: 80vh;  
+
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.signInOrOutTopCorner{
+  position: absolute;
+  top: 1vw;
+  right: 1vw;  
+  outline: none; 
+  background: transparent;
+  border:none;
+  cursor: pointer;
+  z-index: 1;
+  text-decoration:none;
+  list-style-type: none;
+  color: #ffffff;
+}
+
+#signInOrOutTopCorner a{
+  padding-top: 0.5em;
+  padding-bottom: 0em;
+}
+
+#sparklesBackground{
+  background: url('/assets/snowfall_transparent.gif') center fixed;
+  background-repeat: round;
+  height: 50vh;
+  width: 100%;
+}
+
+#sunShining{
+  position: absolute;
+  top: 16vw;
+  left: 13vw;  
+  height: auto;
+}
+
+table{
+ font-size: 1.15em;  
+}
+
+.justifyRow{
+  text-align: justify; 
+  padding-bottom: 1em;
+}
+
+/* Style the footer */
+footer {
+  background-color: rgb(119, 119, 119, 0.8);
+  padding: 1vw;
+  text-align: center;
+  color: white;
+  height: 10vh;
+}
+
+table a{
+  outline: none; 
+  background: transparent;
+  border:none;
+  cursor: pointer;
+  text-decoration:none;
+  list-style-type: none;
+  color: #ffffff;
+}
+
+.tableGreyScheme{
+  margin:auto;
+  color:  #ffffff;
+  margin: auto;
+  border-style: solid;
+  border-color: white;
+  width: 50%;
+  padding: 1em;
+  font-size: 1.3vw;
+  background: rgb(111, 111, 111, 0.5);
+  white-space: nowrap;
+}
+
+.tableGreyScheme th, td{
+  padding-right: 1em;
+  padding-bottom: 1em;
+  text-align: center;  
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+  
+@media screen and (max-width: 600px) 
+{
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .galleryImageDiv {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .galleryImageDiv {
+    width: 100%;
+  }
+}
+
+

@@ -1,0 +1,45 @@
+<h1 class = "headings">Adventures</h1>
+<p class = "headings">These are the amazing journeys we offer to you. Book one of them, and join us!</p>
+
+
+<table>
+  <tbody>
+    <% @adventures.each do |adventure| %>
+      <tr>
+        <td class = "adventureTableColumn"><%= link_to (image_tag adventure.image_url, :class => "productImage"), adventure %></td>
+        <td class = "adventureTableColumn">
+          <table>
+            <tr> <td class = "centerRow"><%= adventure.title %> </td> <br> <br> </tr> 
+            <tr> <td class = "justifyRow"> <%= adventure.description %> </td> </tr>
+            <tr> <td class = "centerRow">Price Per Person : <%= adventure.price %> </td> </tr>
+            <%if session[:admin] == true%>
+              <tr>
+                <td class = "centerRow">
+                  <%= link_to 'Show', adventure %>
+                  <%= link_to 'Edit', edit_adventure_path(adventure) %>
+                  <%= link_to 'Destroy', adventure, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <%end%>
+            <tr>
+              <td class = "centerRow"> 
+                	<form>
+              	    <button class="button1" formaction="/cart/<%= adventure.id%>">Book Adventure</button>
+                  </form> 
+              </td>
+            </tr>
+          </table>
+        </td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%if session[:admin] == true%>
+	<form>
+    <button class="button1" formaction="/adventures/new">New Adventure</button>
+  </form> 
+<%end%>

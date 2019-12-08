@@ -1,0 +1,8 @@
+<%= form_tag("updateItemDate", :method => "post") do %>
+    <%if session[:cart][@adventureId]["adventureDate"] == @dateOfNextSaturday.to_s%>
+    <%= select_tag(:d, options_for_select([[@dateOfNextSaturday],[@dateOfNextSunday]]), :onchange => "this.form.submit();") %>
+    <%else%>
+        <%= select_tag(:d, options_for_select([[@dateOfNextSunday],[@dateOfNextSaturday]]), :onchange => "this.form.submit();") %>
+    <%end%>
+<%= hidden_field_tag(:id, @adventureId) %>
+<% end %>
