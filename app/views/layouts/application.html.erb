@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JC'sHikingAdventures</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
   </head>
 
   <body>
     <header>
-      <h3> JC's Hiking Adventures </h3>
+      <h1 class = "businessNameheading"> JC's Hiking Adventures </h1>
       <div id = "signInOrOutTopCorner" class = "signInOrOutTopCorner">
 
           <% if user_signed_in? %>
@@ -28,7 +30,7 @@
     <section>
       <nav>
         <ul>
-          <li><%=link_to 'Home', '/' %></li>
+          <li><%=link_to 'Home', root_path %></li>
           <li><%=link_to 'Adventures', '/adventures'%></li>
           <%if user_signed_in? %>
             <li><%=link_to 'Your Bookings', '/bookings'%></li>
@@ -44,7 +46,7 @@
     </section>
   
     <footer>
-      <p>Footer</p>
+
     </footer>
     
   </body>

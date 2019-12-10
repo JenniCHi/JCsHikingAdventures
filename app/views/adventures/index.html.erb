@@ -1,6 +1,7 @@
-<h1 class = "headings">Adventures</h1>
-<p class = "headings">These are the amazing journeys we offer to you. Book one of them, and join us!</p>
-
+<div class = "headingDiv">
+  <h1 class = "headings">Adventures</h1>
+  <p class = "belowHeadingPageDescription">These are the amazing journeys we offer to you. Book one of them, and join us!</p>
+</div>  
 
 <table>
   <tbody>
@@ -23,7 +24,7 @@
             <%end%>
             <tr>
               <td class = "centerRow"> 
-                	<form>
+                	<form class = "formAuto">
               	    <button class="button1" formaction="/cart/<%= adventure.id%>">Book Adventure</button>
                   </form> 
               </td>
@@ -39,7 +40,7 @@
 <br>
 
 <%if session[:admin] == true%>
-	<form>
+	<form class = "formAuto">
     <button class="button1" formaction="/adventures/new">New Adventure</button>
   </form> 
 <%end%>

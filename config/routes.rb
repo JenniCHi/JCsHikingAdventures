@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   root :to => 'site#home'
   
-  get '/static_pages/homePageMessage' => 'static_pages#homePageMessage'
-    
+  get '/static_pages/home' => 'static_pages#home'
+  
   resources :bookings
   
   devise_for :users do 

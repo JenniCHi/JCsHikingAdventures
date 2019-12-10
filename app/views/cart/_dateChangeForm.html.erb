@@ -1,4 +1,4 @@
-<%= form_tag("updateItemDate", :method => "post") do %>
+<%= form_tag("updateItemDate", :method => "post", :class => "form") do %>
     <%if session[:cart][@adventureId]["adventureDate"] == @dateOfNextSaturday.to_s%>
     <%= select_tag(:d, options_for_select([[@dateOfNextSaturday],[@dateOfNextSunday]]), :onchange => "this.form.submit();") %>
     <%else%>

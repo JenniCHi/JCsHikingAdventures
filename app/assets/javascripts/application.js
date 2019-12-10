@@ -15,31 +15,29 @@
 //= require turbolinks
 //= require_tree
 
-var showSnow = false;
 
+ 
+/*global $*/
 $(document).ready(function() {
-  console.log(showSnow)
-  if(!showSnow){
-    var sparkles = $("#sparklesBackground");
-    sparkles.hide();
-  }  
-  
-  /*global $*/
-    $('#new_message').click(function(){
-        
-        var src = $(this).find('img').attr('src');
-        $('body').css('assets/gallery/background2.JPG','url('+src+')');
     
-        var message = $("#homePageMessage");
-        message.fadeOut();
-
-        var sparkles = $("#sparklesBackground");
-        sparkles.show();
-    })
-//  $('[data-js-hide-link]').click(function(event){
-   // $(this).parents('li').hide();
-  //  event.preventDefault(); 
-  //});
+    var homeHeadingFirstLine = $("#homeHeadingFirstLine");
+    var homeHeadingSecondLine = $("#homeHeadingSecondLine");
+    var homeHeadingThirdLine = $("#homeHeadingThirdLine");
+    var homeHeadingFourthLine = $("#homeHeadingFourthLine");
+    
+    homeHeadingFirstLine.hide(); 
+    homeHeadingSecondLine.hide(); 
+    homeHeadingThirdLine.hide(); 
+    homeHeadingFourthLine.hide();  
+    
+    homeHeadingFirstLine.fadeIn(1000,function(){
+      homeHeadingSecondLine.fadeIn(1000,function(){
+          homeHeadingThirdLine.fadeIn(1000,function(){
+              homeHeadingFourthLine.fadeIn(1000,function(){
+                  $('#sparklesBackground').css("background-image", "url('/assets/snowfall_transparent.gif')");
+              })
+          })
+        })
+    });	
 })
-
 

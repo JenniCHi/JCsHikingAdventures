@@ -1,3 +1,10 @@
+.aboutUsDescription{
+  font-size: 1.5em;  
+  text-align : justify;
+  margin: 0 0 0.5em 0;
+  padding: 0.5em;
+}
+
 .adventureTableColumn{
   background: rgb(111, 111, 111, 0.5);
 }
@@ -15,8 +22,15 @@ article {
   overflow-y: scroll;
 }
 
+.belowHeadingPageDescription{
+  font-size: 2em;
+  text-align: center;
+  margin: 0 0 0.2em 0;
+  padding: 0.5em;
+}
+
 body {
-    background: url('/assets/backgroundWithSun.gif') no-repeat center fixed;
+    background: url('/assets/background2.JPG') no-repeat center fixed;
     background-size: cover;
     font-family: "Times New Roman", Times, serif;
     font-size: 100%;
@@ -35,14 +49,29 @@ body {
   font-size: 100%;
 }
 
-.checkoutButtonDiv{
-	margin-top: 2em;
-	font-size: 2em;
-}
-/*Hover cannot override id properties, hence it is applied to a button class instead.*/
 .button1:hover {
     background-color: #f1f1f1; 
     color: #666;
+}
+
+.bookingsHeadingDiv{
+  color: #ffffff
+}
+
+.businessNameheading {
+  float: left;
+	font-size: 3em;
+	opacity: 0.9;
+	margin : 0;
+}
+
+#cartHeading{
+  margin-bottom: 1em;  
+}
+
+.checkoutButtonDiv{
+	margin-top: 2em;
+	font-size: 2em;
 }
 
 * {
@@ -56,6 +85,10 @@ body {
 
 .centeredText{
   text-align: center;
+}
+
+.comeSunOrSnowDiv{
+  margin-top: 0.2vh;  
 }
 
 .clearfix:after {
@@ -89,6 +122,123 @@ div.desc {
   background: rgb(111, 111, 111, 0.5);
 }
 
+Form{
+  margin: auto;
+  margin-top: 2em;
+  border-style: solid;
+  border-color: white;
+  text-align: center;
+  width: 50%;
+  padding: 2%;
+  color: white;
+  font-size: 2em;
+  background: rgb(111, 111, 111, 0.5);
+}
+
+Form input {
+	border: none;
+	color: white;
+	text-align: center;
+	border-bottom: 1px solid white;
+	/*The a in rgba is for alpha and defines opacity. This was made 0 to make text input boxes transparent*/
+	outline: none;
+	font-size: 0.6em;
+	width: 80%;
+	background:transparent;
+}
+
+.form{
+  margin: 0;
+  border-style: none;
+  text-align: center;
+  width: 50%;
+  padding: 2%;
+  color: white;
+  font-size: 1.15em;
+  background-color: rgba(133, 146, 158, 0);
+}
+
+.formFreeSubmitButton{
+  padding: 0.1em;
+  display: inline-block; 
+  outline: none;
+	background-color: rgba(133, 146, 158, 0);
+	color: #FFF3F4;
+	margin:auto;
+	margin-top: 1em;
+	display:block;
+  border-style: none;	
+  transition-duration: 0.4s;
+	cursor: pointer;
+  font-size: 1.15em;
+  border-radius: 12em;
+  text-align: center;
+  width: auto;
+}
+
+.formFreeSubmitButton:hover {
+    background-color: #f1f1f1; 
+    color: #666;
+}
+
+.formAuto{
+  margin: auto;
+  border-style: none;
+  text-align: center;
+  width: 50%;
+  padding: 2%;
+  color: white;
+  font-size: 1.15em;
+  background-color: rgba(133, 146, 158, 0);
+}
+
+/*Changing color of placeholder text in forms.*/
+/*
+Title: ::placeholder
+Author: Chris Coyier
+Year: 2017
+Availability: https://css-tricks.com/almanac/selectors/p/placeholder/
+*/
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #D6DBDF;
+    opacity: 1; /* Firefox */
+    text-align: center;
+    font-size: 1.15em;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #D6DBDF;
+	text-align: center;
+  font-size: 1.15em;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #D6DBDF;
+	text-align: center;
+  font-size: 1.15em;
+}
+
+/* Constrols auto-complete styles*/
+/*
+Title: Change Autocomplete Styles in WebKit Browsers
+Author: Geoff Graham
+Year: 2019
+Availability: https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/
+*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .galleryImageDiv {
   padding: 0em 1em 1em 1em;
   float: left;
@@ -111,8 +261,8 @@ div.desc {
 }
 
 .googleMapDiv {
+  
 }
-
 
 header {
   background-color: rgb(102, 102, 102, 0.8);
@@ -125,8 +275,13 @@ header {
 
 .headings {
 	text-align: center;
-	font-size: 3em;
-	opacity: 0.8;
+	font-size: 5em;
+	opacity: 0.9;
+	margin : 0;
+}
+
+.headingDiv{
+  background: rgb(111, 111, 111, 0.5);
 }
 
 .increaseDecrease {
@@ -203,7 +358,7 @@ section:after {
 }
 
 #sparklesBackground{
-  background: url('/assets/snowfall_transparent.gif') center fixed;
+  /*background: url('/assets/snowfall_transparent.gif') center fixed;*/
   background-repeat: round;
   height: 50vh;
   width: 100%;
@@ -214,6 +369,14 @@ section:after {
   top: 16vw;
   left: 13vw;  
   height: auto;
+}
+
+.sunSnowButton{
+  font-size: 2em;
+  margin-top: 2em;
+  position: absolute;
+  bottom: 12vw;
+  right: 40vw;
 }
 
 table{
@@ -261,6 +424,27 @@ table a{
   padding-right: 1em;
   padding-bottom: 1em;
   text-align: center;  
+}
+
+.userFormSubmitButton{
+  padding: 0.1em;
+  display: inline-block; 
+  outline: none;
+	background-color: #666;
+	color: #FFF3F4;
+	margin:auto;
+	margin-top: 1em;
+	display:block;
+	border-color: #666;	
+  transition-duration: 0.4s;
+	cursor: pointer;
+  font-size: 100%;
+  border-radius: 12em;
+}
+
+.userFormSubmitButton:hover {
+    background-color: #f1f1f1; 
+    color: #666;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

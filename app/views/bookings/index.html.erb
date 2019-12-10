@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class = "bookingsHeadingDiv">
+  <h1 class = "headings">Bookings</h1>
+  <p class = "belowHeadingPageDescription">Your journeys, past and present</p>
+</div>  
 
-<h1>Bookings</h1>
+<p id="notice"><%= notice %></p>
 
 <%if @bookings.empty?%>
   <p class = "centeredText"> You have no booked adventures</p>
@@ -38,13 +41,4 @@
     </tbody>
   </table>
 <%end%>  
-
-
-<ul>
-  <% @bookings.each do |booking| %>
-    <li><%= booking.adventure_title %> <%= link_to "Hide", "", class: 'hide', data: {'js-hide-link' => true} %></li>
-  <% end %>
-</ul>
-
-<br>
 

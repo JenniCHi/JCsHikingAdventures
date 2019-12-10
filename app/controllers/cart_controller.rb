@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  include Date_Extension
   
   def add
 
@@ -14,14 +15,17 @@ class CartController < ApplicationController
     if cart[id]
       cart[id]["ticketQuantity"] += 1
     else
-      dateOfNextAdventures
+      dateToday = Date.today
+      
+      @dateOfNextSaturday = getNextSaturday(dateToday)
+      @dateOfNextSunday = getNextSunday(dateToday)
       cart[id] = {"ticketQuantity" => 1, "adventureDate" => @dateOfNextSaturday}
     end
       
     if user_signed_in? 
       redirect_to :action=> :index
     else
-      flash[:notice] = "Login first to start booking adventures!"
+      flash[:notice] = "Sign in first to start booking adventures!"
       redirect_to '/users/sign_in'
     end
   end
@@ -33,7 +37,10 @@ class CartController < ApplicationController
       @cart ={}
     end
     
-    dateOfNextAdventures
+    dateToday = Date.today
+    
+    @dateOfNextSaturday = getNextSaturday(dateToday)
+    @dateOfNextSunday = getNextSunday(dateToday)
   end
   
   def remove
@@ -98,10 +105,11 @@ class CartController < ApplicationController
     redirect_to '/bookings'
   end
   
-  def dateOfNextAdventures
-    @dateOfNextSaturday = Date.new(2019,12,7)
-    @dateOfNextSunday = Date.new(2019,12,8)
-    #@date += 1 + ((3-date.wday) % 7)
+  def dateOfNextAdventures(dateToday)
+    
+    @dateOfNextSaturday = dateToday + ((6 - dateToday.wday) % 7)
+    @dateOfNextSunday = dateToday + ((7 - dateToday.wday) % 7)
+
   end
   
   def updateItemDate
