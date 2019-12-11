@@ -1,8 +1,7 @@
-<%= form_for(adventure) do |f| %>
+ <%= form_for(adventure) do |f| %>
   <% if adventure.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(adventure.errors.count, "error") %> prohibited this adventure from being saved:</h2>
-
       <ul>
       <% adventure.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,26 +11,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, placeholder:"Enter title" %>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
+    <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.label :price %><br>
+    <%= f.text_field :price, placeholder:"Enter price" %>
   </div>
   
   <div class="field">
-    <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
+    <%= f.label :image_url %> <br>
+    <%= f.text_field :image_url, placeholder:"Enter image url" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create", :class => 'userFormSubmitButton'%>
   </div>
 <% end %>

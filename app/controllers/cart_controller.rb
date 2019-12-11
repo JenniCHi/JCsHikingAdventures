@@ -105,13 +105,6 @@ class CartController < ApplicationController
     redirect_to '/bookings'
   end
   
-  def dateOfNextAdventures(dateToday)
-    
-    @dateOfNextSaturday = dateToday + ((6 - dateToday.wday) % 7)
-    @dateOfNextSunday = dateToday + ((7 - dateToday.wday) % 7)
-
-  end
-  
   def updateItemDate
     itemId = params[:id]
     itemNewDate = params[:d]
