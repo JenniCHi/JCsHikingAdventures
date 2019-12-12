@@ -1,3 +1,5 @@
+<!-- Displays JCs Hiking Adventures core product offerings--> 
+
 <div class = "headingDiv">
   <h1 class = "headings">Adventures</h1>
   <p class = "belowHeadingPageDescription">These are the amazing journeys we offer to you. Book one of them, and join us!</p>
@@ -5,6 +7,7 @@
 
 <table>
   <tbody>
+    <!-- Loops through each adventure saved in the database -->
     <% @adventures.each do |adventure| %>
       <tr>
         <td class = "adventureTableColumn"><%= link_to (image_tag adventure.image_url, :class => "productImage"), adventure %></td>
@@ -13,6 +16,7 @@
             <tr> <td class = "centerRow"><%= adventure.title %> </td> <br> <br> </tr> 
             <tr> <td class = "justifyRow"> <%= adventure.description %> </td> </tr>
             <tr> <td class = "centerRow">Price Per Person : <%= adventure.price %> </td> </tr>
+            <!-- Adventure show, edit and destroy functionality limited to admins -->
             <%if session[:admin] == true%>
               <tr>
                 <td class = "centerRow">
@@ -24,6 +28,7 @@
             <%end%>
             <tr>
               <td class = "centerRow"> 
+                  <!-- Adds an adventure to the user's booking cart -->
                 	<form class = "formAuto">
               	    <button class="button1" formaction="/cart/<%= adventure.id%>">Book Adventure</button>
                   </form> 
@@ -31,7 +36,6 @@
             </tr>
           </table>
         </td>
-      
       </tr>
     <% end %>
   </tbody>
@@ -39,6 +43,7 @@
 
 <br>
 
+<!-- Limiting adventure creation access to Admins -->
 <%if session[:admin] == true%>
 	<form class = "formAuto">
     <button class="button1" formaction="/adventures/new">New Adventure</button>

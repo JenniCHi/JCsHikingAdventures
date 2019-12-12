@@ -1,4 +1,13 @@
-<%= form_tag("updateItemDate", :method => "post", :class => "form") do %>
+<!-- On submission of this form, a put (put because we are making an update to a
+value) call is done to the Cart controller's updateItemDate method with the
+chosen date for the adventure to be booked and the adventure id in the parameters. 
+This form is submmited everytime the use changes the value of the select drop 
+down options for dates. -->
+
+<%= form_tag("updateItemDate", :method => "put", :class => "form") do %>
+    <!-- This if statement makes sure the date currently set for the adventure
+    is the default date displayed by the select element. For more context, we
+    only offer the next saturday and sunday date options for adventures.-->
     <%if session[:cart][@adventureId]["adventureDate"] == @dateOfNextSaturday.to_s%>
     <%= select_tag(:d, options_for_select([[@dateOfNextSaturday],[@dateOfNextSunday]]), :onchange => "this.form.submit();") %>
     <%else%>

@@ -1,4 +1,7 @@
-<%= form_tag("authorise", :method => "post") do %>
+<!-- On submission of this form, a get call is done to the Admins controller's
+authorise method with the admin code the user entered in the parameters. -->
+
+<%= form_tag("authorise", :method => "get") do %>
 <%= label_tag(:q, "Admin Code:") %>
 <%= text_field_tag(:q) %>
 <%= submit_tag("Authorise", :class => 'userFormSubmitButton') %>

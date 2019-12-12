@@ -1,3 +1,7 @@
+<!-- This view displays all the bookings the user has made and paid for 
+on their account. This is where they can display an adventure id or QR code
+for redeeming an adventure purchase at the Dublin office. -->
+
 <div class = "bookingsHeadingDiv">
   <h1 class = "headings">Bookings</h1>
   <p class = "belowHeadingPageDescription">Your journeys, past and present</p>
@@ -20,6 +24,8 @@
     </thead>
   
     <tbody>
+      <!-- Looping through each booking attached to the user to display the 
+      details for that booking. -->
       <% @bookings.each do |booking| %>
         <%if booking.user.email = current_user.email%>
           <tr>
@@ -29,6 +35,13 @@
             <td><%= booking.adventure_date.to_date %></td>
             <td><%= booking.cost %></td>
             <td>
+              <!-- This site generates a QR code unique to each booking id. 
+              Reference for site:
+              Title: QR Code Generator
+              Author: Foundata GmbH
+              Year: 2019
+              Availability: http://goqr.me/api/
+              -->
               <a href = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<%=booking.adventure_id%>">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<%=booking.adventure_id%>" alt="QR Code" class = "qrCode">
               </a>

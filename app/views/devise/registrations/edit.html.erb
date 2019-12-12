@@ -1,3 +1,5 @@
+<!-- Displays form for user to edit profile. -->
+
 <div>
   <h1 class = "headings">Edit <%= resource_name.to_s.humanize %></h1>
 </div>
@@ -43,6 +45,7 @@
   <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'userFormSubmitButton' %>
 <% end %>
 
+<!-- Displays a button that the user can click to attempt gaining admin access. -->
 <form class = "formAuto">
-  <button class="formFreeSubmitButton" formaction="/admin/attempt_authorise">Gain Admin Access</button>
+  <button class="formFreeSubmitButton" formaction="/admins/attempt_authorise">Gain Admin Access</button>
 </form> 

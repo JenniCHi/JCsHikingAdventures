@@ -1,3 +1,5 @@
+<!-- Displays form for user to create a user account. -->
+
 <div>
   <h1 class = "headings">Sign Up</h1>
 </div>
@@ -20,16 +22,15 @@
     <% if @minimum_password_length %>
     [<%= @minimum_password_length %> characters min.]
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", placeholder:"Enter new password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder:"Enter new password" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Re-enter new password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Re-enter new password" %>
   </div>
 
   <div class="actions">
     <%= f.submit "Sign up", :class => 'userFormSubmitButton' %>
   </div>
 <% end %>
-

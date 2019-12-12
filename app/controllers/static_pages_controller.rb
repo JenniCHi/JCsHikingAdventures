@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  
+  #No special function logic here because pages are static.
   def home
 
   end

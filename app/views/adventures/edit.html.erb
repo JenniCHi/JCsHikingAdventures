@@ -1,5 +1,13 @@
-<div>
-  <h1 class = "headings">Edit Adventure</h1>
-</div> 
+<!-- Renders a form for editing an adventure instance ONLY if user currently signed 
+in has successfully activated admin privileges -->
 
-<%= render 'form', adventure: @adventure %>
+<%if session[:admin] == true%> 
+    <div>
+      <h1 class = "headings">Edit Adventure</h1>
+    </div> 
+    
+    <%= render 'form', adventure: @adventure %>
+<%else%>
+    <% flash[:notice] = "You are not authorised to edit adventures"%>
+    <div class="belowHeadingPageDescription"><%= flash[:notice] %></div>
+<%end%>

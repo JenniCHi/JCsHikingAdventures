@@ -1,7 +1,7 @@
 .aboutUsDescription{
   font-size: 1.5em;  
   text-align : justify;
-  margin: 0 0 0.5em 0;
+  margin-bottom: 0;
   padding: 0.5em;
 }
 
@@ -18,13 +18,14 @@ article {
   padding: 1vw;
   width: 90%;
   background-color: rgb(102, 102, 102, 0.1);
-  height: 100%; /* only for demonstration, should be removed */
+  height: 100%;
   overflow-y: scroll;
 }
 
 #socialMediaIcons{
   text-align: center;
-  margin: 2em 2em;
+  margin: 0.2em 2em;
+  padding: 2em 2em;
 }
 
 .belowHeadingPageDescription{
@@ -154,7 +155,6 @@ Form input {
 	color: white;
 	text-align: center;
 	border-bottom: 1px solid white;
-	/*The a in rgba is for alpha and defines opacity. This was made 0 to make text input boxes transparent*/
 	outline: none;
 	font-size: 0.6em;
 	width: 80%;
@@ -207,7 +207,7 @@ Form input {
 }
 
 /*Changing color of placeholder text in forms.*/
-/*
+/*Reference for site:
 Title: ::placeholder
 Author: Chris Coyier
 Year: 2017
@@ -232,8 +232,8 @@ Availability: https://css-tricks.com/almanac/selectors/p/placeholder/
   font-size: 1.15em;
 }
 
-/* Constrols auto-complete styles*/
-/*
+/* Controls auto-complete styles*/
+/*Reference for site:
 Title: Change Autocomplete Styles in WebKit Browsers
 Author: Geoff Graham
 Year: 2019
@@ -275,7 +275,7 @@ select:-webkit-autofill:focus {
 }
 
 .googleMapDiv {
-  
+  padding-bottom: 2em;
 }
 
 header {
@@ -315,17 +315,16 @@ option{
   color: black;
   font-size: 1.1vw;
 }
-/* Create two columns/boxes that floats next to each other */
+
 nav {
   float: left;
   width: 10%;
-  height: 100%; /* only for demonstration, should be removed */
+  height: 100%;
   background: rgb(204, 204, 204, 0.5);
   padding: 1vw;
   font-size: 1.15em; 
 }
 
-/* Style the list inside the menu */
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -360,7 +359,6 @@ section {
   height: 80vh;  
 }
 
-/* Clear floats after the columns */
 section:after {
   content: "";
   display: table;
@@ -387,7 +385,6 @@ section:after {
 }
 
 #sparklesBackground{
-  /*background: url('/assets/snowfall_transparent.gif') center fixed;*/
   background-repeat: round;
   height: 50vh;
   width: 100%;
@@ -417,7 +414,6 @@ table{
   padding-bottom: 1em;
 }
 
-/* Style the footer */
 footer {
   background-color: rgb(119, 119, 119, 0.8);
   padding: 1vw;
@@ -476,7 +472,7 @@ table a{
     color: #666;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Responsive site code*/
 @media (max-width: 600px) {
   nav, article {
     width: 100%;
@@ -519,10 +515,6 @@ table a{
   }
   
   table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
     content: attr(data-label);
     float: left;
     font-weight: bold;
@@ -547,4 +539,6 @@ table a{
   }
 }
 
-
+.whiteFont{
+  color: white;
+}

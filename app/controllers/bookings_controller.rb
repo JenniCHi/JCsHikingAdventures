@@ -1,8 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
+  #Gets the current signed in user's specific bookings.
   def index
     allBookings = Booking.all
+    #Filtering all bookings by it's user id.
     @bookings = allBookings.select{|booking| booking.user_id == current_user.id}
   end
 

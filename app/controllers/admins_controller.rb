@@ -1,25 +1,34 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
-
   def attempt_authorise
-    @admin = Admin.new
+      if session[:admin]
+        #If the user already recieved admin privileges, they get redirected to
+        #the authorise view where they get this message.
+        flash[:notice] = "You have already been granted admin privileges for this session"
+        redirect_to :action=> :authorise
+      end
   end
   
+  #This method checks the code that the user entered to gain admin access
+  #matches the code we have stored in the database.
+  # GET /admins/authorise
   def authorise
-    adminCode = params[:q].to_i
-    
-    adminAuth = Admin.first
-    if adminAuth.admin_code == adminCode  
-      #@user = User.find(current_user.id)
-      #@user.save
-      session[:admin] = true
-      flash[:notice] = "You've been temporarily granted admin privileges"
-    else
-      flash[:notice] = "Admin credentials incorrect"
+    #Only attempts to authorise the user if they haven't already been authorised.
+    if !session[:admin]
+      adminCode = params[:q].to_i
+      
+      #Fetches the correct admin code from the database.
+      adminAuth = Admin.first
+      if adminAuth.admin_code == adminCode  
+        #If the codes match, setting session[:admin] = true allows the user
+        #to see CRUD options on Adventures.
+        session[:admin] = true
+        flash[:notice] = "You've been temporarily granted admin privileges"
+      else
+        flash[:notice] = "Admin credentials incorrect"
+      end
     end
-    
-    redirect_to '/adventures'
   end
   
   # GET /admins

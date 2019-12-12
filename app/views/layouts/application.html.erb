@@ -1,3 +1,5 @@
+<!-- Contains elements and configurations that are general to every view.  -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +9,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Configured favicon here. -->
     <link rel="icon" type="image/png" href="assets/favicon.png"/>
   </head>
 
@@ -14,11 +17,11 @@
     <header>
       <h1 class = "businessNameheading"> JC's Hiking Adventures </h1>
       <div id = "signInOrOutTopCorner" class = "signInOrOutTopCorner">
-
+          <!-- If user is signed in, use their name to show a personalised 
+          greeting. Booking cart also only shown to signed in users. -->
           <% if user_signed_in? %>
             <li> <a href = "/users/edit">Hi <%= current_user.name%>, click to edit profile</a></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-            <li><%=link_to 'Your Cart', '/cart/index'%></li>
           <%else%>
             <li><%=link_to 'Register', new_user_registration_path%></li>
             <li><%=link_to 'Sign In', new_user_session_path%></li>
@@ -28,12 +31,15 @@
     </header>
   
     <section>
+      <!-- This has all the menu options that the user can click on to navigate to. -->
       <nav>
         <ul>
           <li><%=link_to 'Home', root_path %></li>
           <li><%=link_to 'Adventures', '/adventures'%></li>
+          <!-- Bookings page limited to signed in users. -->
           <%if user_signed_in? %>
             <li><%=link_to 'Your Bookings', '/bookings'%></li>
+            <li><%=link_to 'Your Cart', '/cart/index'%></li>
           <%end%>
           <li><%=link_to 'Gallery', '/gallery'%></li>
           <li><%=link_to 'About', '/about'%></li>

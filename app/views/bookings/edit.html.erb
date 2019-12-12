@@ -1,6 +1,15 @@
-<h1>Editing Booking</h1>
-
-<%= render 'form', booking: @booking %>
-
-<%= link_to 'Show', @booking %> |
-<%= link_to 'Back', bookings_path %>
+<!-- This displays the edit form for a booking of a particular id. This edit form will
+however never be viewable due to this if statement because we want no one, 
+not even admins, to be able to edit a booking. These if statements are
+necessary because we have routes that lead to this view. -->
+<%if false%>
+    <h1>Editing Booking</h1>
+    
+    <%= render 'form', booking: @booking %>
+    
+    <%= link_to 'Show', @booking %> |
+    <%= link_to 'Back', bookings_path %>
+<%else%>
+    <% flash[:notice] = "You are not authorised to access this"%>
+    <div class="belowHeadingPageDescription"><%= flash[:notice] %></div>
+<%end%>

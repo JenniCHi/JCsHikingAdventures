@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<!-- Shows an adventure instance of a certain id ONLY if user currently signed 
+in has successfully activated admin privileges -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @adventure.title %>
-</p>
+<%if session[:admin] == true%> 
+  <div class = "headingDiv">
+    <p>
+      <strong>Title:</strong>
+      <%= @adventure.title %>
+    </p>
+    
+    <p>
+      <strong>Description:</strong>
+      <%= @adventure.description %>
+    </p>
+    
+    <p>
+      <strong>Price:</strong>
+      <%= @adventure.price %>
+    </p>
+    
+    <p>
+      <strong>Image url:</strong>
+      <%= @adventure.image_url %>
+    </p>
+    <%= link_to 'Edit', edit_adventure_path(@adventure), :class => 'whiteFont' %> |
+    <%= link_to 'Back', adventures_path,:class => 'whiteFont' %>
+    </div>
+<%else%>
+    <% flash[:notice] = "You are not authorised to show adventures"%>
+    <div class="belowHeadingPageDescription"><%= flash[:notice] %></div>
+<%end%>
 
-<p>
-  <strong>Description:</strong>
-  <%= @adventure.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @adventure.price %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @adventure.image_url %>
-</p>
-
-<%= link_to 'Edit', edit_adventure_path(@adventure) %> |
-<%= link_to 'Back', adventures_path %>

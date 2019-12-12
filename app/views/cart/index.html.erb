@@ -1,9 +1,13 @@
+<!-- This view displays all the adventures in the user's booking cart. The
+user is only able to see a link to this page, and ultimately view it, if
+they are signed in. -->
+
 <h1 class = "headings" id="cartHeading">Pending Bookings</h1>
 
+<!-- Displays this message if no adventures added to the user cart. -->
 <% if @cart.empty? %>
     <p class = "belowHeadingPageDescription"> You have no pending adventures to book</p>
 <%else%>
-
     <table id="bookingTable" class = "tableGreyScheme">
         <thead>
             <tr> 
@@ -15,37 +19,46 @@
         </thead>
         <tbody> 
             <% total = 0%>
+            <!-- Looping though each adventure in the cart (cart is stored in session). -->
             <%@cart.each do |adventureId, ticketQuantityAndDate|%>
             <%adventure = Adventure.find_by_id(adventureId)%>
             <tr>
                 <td> <%=adventure.title%> </td>
                 <td class = "centerRow">
+                    <!-- This lets the user increase or decrease ticket counts. -->
                     <a href = "/cart/<%=adventure.id%>/increase">+</a>
                     <%= ticketQuantityAndDate["ticketQuantity"] %> 
                     <a href = "/cart/<%=adventure.id%>/decrease">-</a>
                 </td>
                 <td>
                     <%@adventureId = adventureId%>
-                     
+                    <!-- This renders a form that contains a select element
+                    which has potential adventure dates to choose from. Here we 
+                    are passing certain parameters for the form to use. -->
     				<%= render 'dateChangeForm', 
     				:locals => {:dateOfNextSaturday => @dateOfNextSaturday, :dateOfNextSunday => @dateOfNextSunday, :adventureId =>  @adventureId}%>
                 </td>
+                <!-- Calculates total cost of adventures tickets and displays the amount in euro currency. -->
                 <td> <%= number_to_currency(adventure.price*ticketQuantityAndDate["ticketQuantity"], :unit => "€")%> </td>
                 <td class = "centerRow"> 
     	            <form class = "form">
+    	                <!-- Used to remove an adventure from the cart. -->
               	        <button class="button1" formaction="/cart/<%=adventure.id%>/remove">Remove</button>
                     </form> 
                 </td> 
             </tr>
+            <!-- Accumutively calculates total cost of ALL adventure tickets in the cart. -->
             <%total += adventure.price*ticketQuantityAndDate["ticketQuantity"]%>
             <%end%>
             <tr> 
                 <td></td>
                 <td></td>
                 <td></td>
+                <!-- Displays total cost of ALL adventure tickets in the cart. -->
                 <td> Total cost = <%= number_to_currency(total, :unit => "€")%></td>
                 <td> 
     	            <form class = "form">
+    	                <!-- Used to clear the whole cart. -->
               	        <button class="button1" formaction="/cancel">Cancel</button>
                     </form> 
                 </td>
@@ -53,6 +66,9 @@
         </tbody>
     </table>   
     <div class = "checkoutButtonDiv"> 
+        <!-- This form leads the user to payment for the cart adventures via PayPal.
+        Currently this is a dummy form as the business needs an official PayPal
+        account first. -->
         <form class = "formAuto" action="/checkout">
             <input type="hidden" name="business" value="x18105386@student.ncirl.ie">
             <input type="hidden" name="currency_code" value="EUR">

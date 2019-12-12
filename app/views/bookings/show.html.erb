@@ -1,34 +1,45 @@
-<p id="notice"><%= notice %></p>
+<!-- This displays a booking of a particular id individually. This will
+however never be viewable due to this if statement because we want no one, 
+not even admins, to be able to see a booking this way. We want bookings to
+particularly be viewed from the index page only. These if statements are 
+necessary because we have routes that lead to this view. -->
 
-<p>
-  <strong>Adventure:</strong>
-  <%= @booking.adventure_id %>
-</p>
-
-<p>
-  <strong>Adventure title:</strong>
-  <%= @booking.adventure_title %>
-</p>
-
-<p>
-  <strong>Ticket quantity:</strong>
-  <%= @booking.ticket_quantity %>
-</p>
-
-<p>
-  <strong>Adventure date:</strong>
-  <%= @booking.adventure_date %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @booking.cost %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @booking.user %>
-</p>
-
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<%if false%>
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <strong>Adventure:</strong>
+    <%= @booking.adventure_id %>
+  </p>
+  
+  <p>
+    <strong>Adventure title:</strong>
+    <%= @booking.adventure_title %>
+  </p>
+  
+  <p>
+    <strong>Ticket quantity:</strong>
+    <%= @booking.ticket_quantity %>
+  </p>
+  
+  <p>
+    <strong>Adventure date:</strong>
+    <%= @booking.adventure_date %>
+  </p>
+  
+  <p>
+    <strong>Cost:</strong>
+    <%= @booking.cost %>
+  </p>
+  
+  <p>
+    <strong>User:</strong>
+    <%= @booking.user %>
+  </p>
+  
+  <%= link_to 'Edit', edit_booking_path(@booking) %> |
+  <%= link_to 'Back', bookings_path %>
+<%else%>
+    <% flash[:notice] = "You are not authorised to access this"%>
+    <div class="belowHeadingPageDescription"><%= flash[:notice] %></div>
+<%end%>

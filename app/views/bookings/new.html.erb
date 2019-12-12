@@ -1,5 +1,16 @@
-<h1>New Booking</h1>
+<!-- This displays the create form for a booking. This form will
+however never be viewable due to this if statement because we want no one, 
+not even admins, to be able to create a booking. Bookings must be created
+only through the Cart controller. These if statements are necessary because we 
+have routes that lead to this view. -->
 
-<%= render 'form', booking: @booking %>
-
-<%= link_to 'Back', bookings_path %>
+<%if false%>
+    <h1>New Booking</h1>
+    
+    <%= render 'form', booking: @booking %>
+    
+    <%= link_to 'Back', bookings_path %>
+<%else%>
+    <% flash[:notice] = "You are not authorised to access this"%>
+    <div class="belowHeadingPageDescription"><%= flash[:notice] %></div>
+<%end%>
